@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Registrar
+  form.form-horizontal(id='signup-form', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='email') Email
+      .col-sm-7
+        if user
+          input.form-control(type='email', name='email', id='email', placeholder='Email', value=messages.email, autofocus, required)
+        else
+          input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
+    .form-group
+      label.col-sm-3.control-label(for='password') Senha
+      .col-sm-7
+        if user
+          input.form-control(type='password', name='password', id='password', placeholder='Senha', value=messages.password, required)
+        else
+          input.form-control(type='password', name='password', id='password', placeholder='Senha', required)
+    .form-group
+      label.col-sm-3.control-label(for='confirmPassword') Confirmar Senha
+      .col-sm-7
+        if user
+          input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirmar Senha', value=messages.confirmPassword, required)
+        else
+          input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirmar Senha', required)
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.btn.btn-success(type='submit')
+          i.fa.fa-user-plus
+          | Registrar

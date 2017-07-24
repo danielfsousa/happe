@@ -1,0 +1,91 @@
+extends ../layout
+
+block content
+  .row  
+    .col-md-4
+      include ../includes/sidebar
+
+    .col-md-8
+      .page-header
+        h3 Informações do Perfil
+
+      form.form-horizontal(action='/conta/perfil', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group
+          label.col-sm-3.control-label(for='email') Email
+          .col-sm-7
+            input.form-control(type='email', name='email', id='email', value=user.email)
+        .form-group
+          label.col-sm-3.control-label(for='name') Nome
+          .col-sm-7
+            input.form-control(type='text', name='name', id='name', value=user.profile.name)
+        .form-group
+          label.col-sm-3.control-label Sexo
+          .col-sm-6
+            label.radio-inline
+              input(type='radio', checked=user.profile.gender=='masculino', name='gender', value='masculino', data-toggle='radio')
+              span Masculino
+            label.radio-inline
+              input(type='radio', checked=user.profile.gender=='feminino', name='gender', value='feminino', data-toggle='radio')
+              span Feminino
+            label.radio-inline
+              input(type='radio', checked=user.profile.gender=='outro', name='gender', value='outro', data-toggle='radio')
+              span Outro
+        .form-group
+          label.col-sm-3.control-label(for='location') Localização
+          .col-sm-7
+            input.form-control(type='text', name='location', id='location', value=user.profile.location)
+        .form-group
+          label.col-sm-3.control-label(for='website') Website
+          .col-sm-7
+            input.form-control(type='text', name='website', id='website', value=user.profile.website)
+        .form-group
+          label.col-sm-3.control-label Gravatar
+          .col-sm-4
+            img(src=user.gravatar(), class='profile', width='100', height='100')
+        .form-group
+          .col-sm-offset-3.col-sm-4
+            button.btn.btn.btn-primary(type='submit')
+              i.fa.fa-pencil
+              | Atualizar Perfil
+
+      .page-header
+        h3 Alterar senha
+
+      form.form-horizontal(action='/conta/senha', method='POST')
+        input(type='hidden', name='_csrf', value=_csrf)
+        .form-group
+          label.col-sm-3.control-label(for='password') Nova senha
+          .col-sm-7
+            input.form-control(type='password', name='password', id='password')
+        .form-group
+          label.col-sm-3.control-label(for='confirmPassword') Confirmar Senha
+          .col-sm-7
+            input.form-control(type='password', name='confirmPassword', id='confirmPassword')
+        .form-group
+          .col-sm-offset-3.col-sm-4
+            button.btn.btn-primary(type='submit')
+              i.fa.fa-lock
+              | Alterar Senha
+
+      .page-header
+        h3 Excluir Conta
+
+      form.form-horizontal(action='/conta/excluir', method='POST')
+        .form-group
+          .col-sm-12
+            p Você realmente deseja continuar? Essa ação é irreversível!
+            input(type='hidden', name='_csrf', value=_csrf)
+            button.btn.btn-danger(type='submit')
+              i.fa.fa-trash
+              | Sim, quero excluir minha conta
+
+      .page-header
+        h3 Contas Conectadas
+      .form-horizontal
+        .form-group
+          .col-sm-12
+            if user.facebook
+              p: a.text-danger(href='/conta/desvincular/facebook') Desconectar a sua conta do Facebook
+            else
+              p: a(href='/auth/facebook') Conectar a sua conta do Facebook

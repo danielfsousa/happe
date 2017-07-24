@@ -1,0 +1,136 @@
+@import "themes/modern/variables";
+
+@import "lib/bootstrap/bootstrap";
+@import "lib/font-awesome/font-awesome";
+
+@import "themes/modern/modern";
+
+
+// Scaffolding
+// -------------------------
+
+body {
+  padding-top: 60px;
+  margin-bottom: 75px;
+  overflow-x: hidden;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+
+  p, ul {
+    margin-bottom: 0;
+  }
+}
+
+// Input Fields
+// -------------------------
+
+textarea {
+  resize: vertical;
+}
+
+// Navbar
+// -------------------------
+
+.navbar-nav img {
+  width: 30px;
+  height: 30px;
+  margin: -15px 15px -15px;
+}
+
+// Sidebar
+// -------------------------
+
+.sidebar {
+  @media only screen and (min-width: 992px) {
+    margin-top: 40px;
+  }
+
+  button {
+    display: block;
+    position: relative;
+    top: -10px;
+    border: none;
+    border-bottom: 1px solid rgba(238, 238, 238, 0.9);
+    width: 100%;
+    padding: 15px;
+    background: #f9f9f9;
+    font-size: 16px;
+    color: $brand-primary;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    @media only screen and (min-width: 992px) {
+      display: none;
+    }
+  }
+
+  button:active,
+  button:focus {
+    outline: none;
+  }
+
+  > ul {
+    width: 100%;
+    @media only screen and (min-width: 992px) {
+      display: block !important;
+      width: 80%;
+    }
+  } 
+
+  .inner {
+    display: none;
+    overflow: hidden;
+    a {
+      margin-left: 20px; 
+    }
+  }
+
+  // .active ul {
+  //   max-height: 1000px;
+  // }
+
+  .fa-circle-o::before {
+    font-size: 8px;
+    vertical-align: 20%;
+    margin-right: 4px;
+  }
+}
+
+// Alerts
+// -------------------------
+
+.alert {
+  margin-top: 20px;
+}
+
+// Thumbnails
+// -------------------------
+
+.thumbnail {
+  padding: 0;
+  border-radius: 0;
+  box-shadow: 0 0 5px #ccc, inset 0 0 0 #000;
+}
+
+// Font Icons
+// -------------------------
+
+.fa {
+  margin-right: 6px;
+}
+
+// Dropdown
+// ------------------------
+
+.navbar-nav > li > .dropdown-menu {
+  border-radius: 4px;
+}

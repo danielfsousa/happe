@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  .page-header
+      h3 Esqueci a senha
+  .col-sm-8.col-sm-offset-2
+    form(method='POST')
+      input(type='hidden', name='_csrf', value=_csrf)
+      .form-group
+        p Digite seu email abaixo para enviarmos as instruções para a alteração de senha.
+        label.control-label(for='email') Email
+        input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
+      .form-group
+        button.btn.btn-primary(type='submit')
+          i.fa.fa-key
+          | Redefinir Senha

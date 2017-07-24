@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Entrar
+  form.form-horizontal(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='email') Email
+      .col-sm-7
+        input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus, required)
+    .form-group
+      label.col-sm-3.control-label(for='password') Senha
+      .col-sm-7
+        input.form-control(type='password', name='password', id='password', placeholder='Senha', required)
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.col-sm-3.btn.btn-primary(type='submit')
+          i.fa.fa-user
+          | Entrar
+        a.btn.btn-link(href='/esqueci-a-senha') Esqueceu sua senha?
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        p Não tem uma conta? 
+          a.btn.btn-link(href='/registrar') Registre-se
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        hr
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        a.btn.btn-block.btn-facebook.btn-social(href='/auth/facebook')
+          i.fa.fa-facebook
+          | Entrar com o Facebook
